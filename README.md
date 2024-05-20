@@ -15,7 +15,24 @@ Given the model trained each day to predict the success of the AR1 process predi
 ## Results
 
 ### AR1 Process
-Just as a baseline the following plot displays the returns of a pairs trading strategy just using AR1 proceess predictions trained once for each of the top 20 correlated pairs over a past year are used to predict the daily spread over the next year. In a successful pairs trade, the coefficients of the AR1 process are expected to be negative and thus suggest a reversion in spreads from time *t-1* to *t*. As seen in the results over a 1 year time period, this strategy works fairly well:
+Just as a baseline the following plot displays the returns of a pairs trading strategy just using AR1 proceess predictions trained once for each of the top 20 correlated pairs over a past year are used to predict the daily spread over the next year. In a successful pairs trade, the coefficients of the AR1 process are expected to be negative and thus suggest a reversion in spreads from time *t-1* to *t*. As seen in the results over a 1 year time period, this strategy works fairly well with an average return of .04% per day and a successful trade rate of 62.1%:
+
+![AR1_process_pairs_trading_results](https://github.com/sayuj-choudhari/pairs_trading_classifier_model/assets/122761001/4af56666-310d-489f-a966-7ae1f459243e)
+
+### Confidence classification
+The following plot displays the results of the confidence classification model over the same trading period, with positions being taken daily on the 5 most confident signals versus all 20 correlated pairs. The model performs favorably to the baseline, with an average return of .09% per day and a successful trade rate of 68.9%:
+
+
+![classification_model_pairs_trading_results](https://github.com/sayuj-choudhari/pairs_trading_classifier_model/assets/122761001/a3467f6a-5faa-4cd4-879c-7351cd8c708c)
+
+Both models have a 2% stop loss on a position, which was only activated <5 times for both models out of over 250 trades.
+
+## Continuation / Future work
+
+The results from this project support the confidence classification as a signficant improvement to trade signal identification. The results of the strategy against the baseline show favorable returns but also a bit more volatility which may be expected given the 75% reduction in positions (20 to 5), making the portfolio more vulnerable to big moves in just a single pair. An alternative strategy would be to use the classification model and confidences as a weighting for each of the 20 pairs, putting signficantly higher weight on stronger confidences compared to the weaker ones at each day. This change could either improve returns from the baseline and/ or improve stability of the portfolio returns.
+
+
+
 
 
 
